@@ -12,10 +12,10 @@ class Principal extends CI_Controller
         }
     }
 
-    public function index()
-    {
-        $data["nombreusuario"] = $this->session->userdata('nombre'); 
-        $data["titulo"]        = "Principal";
-        $this->load->view('principal', $data);
+    public function index() {
+        $data["nombre"]   = $this->session->userdata('nombre'); 
+        $data["apellido"] = $this->session->userdata('apellido');
+        $data["titulo"]   = "Principal";
+        $this->load->view('index', $data);
     }
 }
