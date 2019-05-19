@@ -1,0 +1,14 @@
+.body-fondo {
+    background-image:url('../img/fondo2.jpg');
+    background-repeat: no-repeat;
+  }
+
+  .card {
+    opacity: 0.7;
+    filter: alpha(opacity=40);
+  }
+
+  .card:hover {
+    opacity: 0.9;
+    filter: alpha(opacity=40);
+  }
