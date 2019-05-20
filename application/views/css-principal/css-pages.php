@@ -11,3 +11,6 @@
 
   <!--Estilos personales-->
   <link href="<?php echo base_url();?>/assets/css/styles-index.css" rel="stylesheet">
+
+<!--favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>/assets/img/favicon.png">

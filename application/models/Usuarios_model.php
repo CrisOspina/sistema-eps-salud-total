@@ -6,6 +6,11 @@
             $this->load->helper('security');
         }
 
+        function listar() {
+            $query = $this->db->get("pacientes");
+            return $query->result_array();  
+        }
+
     /*****/
 
         //Valida los campos con los resultados de la bd.
