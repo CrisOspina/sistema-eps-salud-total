@@ -9,7 +9,7 @@
   <meta name="description" content="sistema de administración de citas">
   <meta name="author" content="Cristian Ospina - Valentina Rua">
 
-  <title><?php echo $tituloLogin ?></title>
+  <title>Salud total</title>
 
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>/assets/img/favicon.png">
   <!-- Custom fonts for this template-->

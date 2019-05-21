@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Citas extends CI_Controller 
+class Medicamentos extends CI_Controller 
 {
     function __construct() {
 
@@ -9,8 +9,6 @@ class Citas extends CI_Controller
 
         //Cargar libreria de grocery_crud
         $this->load->library('grocery_CRUD');
-
-        $this->load->model('usuarios_model');
 
         //instanciar la libreria
         $this->crud = new grocery_CRUD();
@@ -25,40 +23,44 @@ class Citas extends CI_Controller
         $data["nombre"] = $this->session->userdata('nombre'); 
         $data["apellido"] = $this->session->userdata('apellido');  
 
-        $data["titulo"] = "Citas";
-        $data["descripcion"] = "Citas médicas";
+        $data["titulo"] = "Formula";
+        $data["descripcion"] = "Formula de medicamentos";
 
         //Tema del crud.
         $this->crud->set_theme('flexigrid');
 
         //Cargar la tabla
-        $this->crud->set_table('citaspacientes');
+        $this->crud->set_table('medicamentos');
 
         //Si queremes relacionar dos tablas y que podemos por medio de un select asociar un dato de una
         //de ellas usamos set_relation (campo de la tabla set table, la tabla asociar, que campo mostrar de la tabla asociar)
-        $this->crud->set_relation("pacienteid","pacientes",'{nombre} {apellido}');
-        $this->crud->set_relation("medicoid","medicos",'{nombre}');
+        $this->crud->set_relation("pacienteid","citaspacientes","pacienteid");
+        $this->crud->set_relation("medicoid","citaspacientes","medicoid");
+        $this->crud->set_relation("fechacita","citaspacientes","fechacita");
 
         //Definicion de campos.
-        $this->crud->fields("pacienteid","medicoid","fechacita","observaciones");
+        $this->crud->fields("pacienteid","medicoid","fechacita","referencia1","cantidad1","referencia2","cantidad2","referencia3","cantidad3","observaciones");
 
         //Campos requeridos
         $this->crud->required_fields("pacienteid","medicoid","fechacita");
 
         //Redefinir un titulo a la tabla
-        $this->crud->set_subject("Citas");
+        $this->crud->set_subject("Medicamentos");
 
         $this->crud->display_as("pacienteid","Paciente");
         $this->crud->display_as("medicoid","Médico");
-        $this->crud->display_as("fechacita","Fecha de la cita");
+        $this->crud->display_as("fechacita","Fecha de la formula");
+        $this->crud->display_as("referencia1","Referencia uno");
+        $this->crud->display_as("cantidad1","Cantidad");
+        $this->crud->display_as("referencia2","Referencia dos");
+        $this->crud->display_as("cantidad2","Cantidad");
+        $this->crud->display_as("referencia3","Referencia tres");
+        $this->crud->display_as("cantidad3","Cantidad");
         $this->crud->display_as("observaciones","Observaciones");
         $this->crud->display_as("fechamodificacion","Modificación");
         $this->crud->display_as("fecharegistro","Registro");
 
-        $this->crud->columns("pacienteid","medicoid","fechacita","observaciones");
-
-        //Validacion de fechas al ingresar citas.
-        $this->crud->set_rules('fechacita','Fecha cita','callback_check_dates');
+        $this->crud->columns("pacienteid","medicoid","fechacita","referencia1","cantidad1","referencia2","cantidad2","referencia3","cantidad3","observaciones");
         
         //Aplicar el render, que es ejecutar estas variables y esperar los tres componentes para cargar en la vista.
         $tabla = $this->crud->render();
@@ -69,34 +71,6 @@ class Citas extends CI_Controller
         $data["css_files"] = $tabla->css_files;
 
         $this->load->view('crud', $data);
-    }
-    
-    function check_dates($fechacita) {
-
-        $data = $this->usuarios_model->validar_citas();
-            // if (sizeof($data) > 0) {
-            //     $this->form_validation->set_message('acceso','No se puede asignar');
-            // }
-
-        if ($fechacita == $data)
-        {
-            $this->crud->set_message('check_dates', "No se puede asignar");
-            return FALSE;
-        }
-        else
-        {
-            return TRUE;
-        }
-        
-
-        // if ($fechacita == $data) {
-		// 	$this->form_validation->set_message('acceso','No se puede asignar');
-		// 	return false;
-        // }
-		// else
-		// {
-		// 	return true;
-		// }
     }
 }
 

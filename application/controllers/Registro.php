@@ -8,9 +8,6 @@ class Registro extends CI_Controller {
 
         $this->load->model("usuarios_model");
 
-        if (!$this->session->userdata('pacienteid')) {
-            redirect('login');
-        }
     }   
 
     public function nuevo() {
@@ -19,7 +16,11 @@ class Registro extends CI_Controller {
         if (count($this->input->post())>0) {
             
             $resp = $this->usuarios_model->ingresar();
+           
             $data["mensaje"] = $resp;
+
+          
+
         }
 
         $this->load->view('login', $data);

@@ -45,7 +45,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="<?php echo base_url();?>./index.php/medicamentos" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-medkit "></i>
             <span>Medicamentos</span>
         </a>
@@ -61,7 +61,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url();?>./index.php/citas" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="<?php echo base_url();?>./index.php/citas/" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-ambulance"></i>
             <span>Citas</span>
         </a>

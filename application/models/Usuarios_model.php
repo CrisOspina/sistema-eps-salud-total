@@ -26,7 +26,7 @@
             //Los nombres de las variables deben coincidir con los nombres de los campos.
             $vector = array("pacienteid" => $pacienteid, "clave" => md5($clave));
             
-            //Buscar el la tabla pacientes, lo que devuelve del array.
+            //Buscar en la tabla pacientes, lo que devuelve del array.
             $query = $this->db->get_where("pacientes", $vector);
 
             return $query->result_array();
@@ -78,6 +78,23 @@
                 $resp = "Registro insertado con exito";
             }
             return $resp;
+        }
+
+        //Valida los campos con los resultados de la bd.
+        function validar_citas() {
+
+            $fechacita = $this->input->post('fechacita');
+            
+            //Aplicar politicas de control y limpieza de código malicioso que nos envian en un formulario.
+            $fechacita = $this->security->xss_clean($fechacita);
+
+            //Los nombres de las variables deben coincidir con los nombres de los campos.
+            $vector = array("fechacita" => $fechacita);
+            
+            //Buscar en la tabla pacientes, lo que devuelve del array.
+            $query = $this->db->get_where("citaspacientes", $vector);
+
+            return $query->result_array();
         }
     }
 ?>
