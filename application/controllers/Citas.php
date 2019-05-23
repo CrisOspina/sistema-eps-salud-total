@@ -38,12 +38,13 @@ class Citas extends CI_Controller
         //de ellas usamos set_relation (campo de la tabla set table, la tabla asociar, que campo mostrar de la tabla asociar)
         $this->crud->set_relation("pacienteid","pacientes",'{nombre} {apellido}');
         $this->crud->set_relation("medicoid","medicos",'{nombre}');
+        $this->crud->set_relation("hora","horascitaspacientes", "hora");
 
         //Definicion de campos.
-        $this->crud->fields("pacienteid","medicoid","fechacita","observaciones");
+        $this->crud->fields("pacienteid","medicoid","fechacita","hora","observaciones");
 
         //Campos requeridos
-        $this->crud->required_fields("pacienteid","medicoid","fechacita");
+        $this->crud->required_fields("pacienteid","medicoid","fechacita","hora");
 
         //Redefinir un titulo a la tabla
         $this->crud->set_subject("Citas");
@@ -51,14 +52,12 @@ class Citas extends CI_Controller
         $this->crud->display_as("pacienteid","Paciente");
         $this->crud->display_as("medicoid","Médico");
         $this->crud->display_as("fechacita","Fecha de la cita");
+        $this->crud->display_as("hora","Hora de la cita");
         $this->crud->display_as("observaciones","Observaciones");
         $this->crud->display_as("fechamodificacion","Modificación");
         $this->crud->display_as("fecharegistro","Registro");
 
-        $this->crud->columns("pacienteid","medicoid","fechacita","observaciones");
-
-        //Validacion de fechas al ingresar citas.
-        $this->crud->set_rules('fechacita','Fecha cita','callback_check_dates');
+        $this->crud->columns("pacienteid","medicoid","fechacita","hora","observaciones");
         
         //Aplicar el render, que es ejecutar estas variables y esperar los tres componentes para cargar en la vista.
         $tabla = $this->crud->render();
@@ -69,34 +68,6 @@ class Citas extends CI_Controller
         $data["css_files"] = $tabla->css_files;
 
         $this->load->view('crud', $data);
-    }
-    
-    function check_dates($fechacita) {
-
-        $data = $this->usuarios_model->validar_citas();
-            // if (sizeof($data) > 0) {
-            //     $this->form_validation->set_message('acceso','No se puede asignar');
-            // }
-
-        if ($fechacita == $data)
-        {
-            $this->crud->set_message('check_dates', "No se puede asignar");
-            return FALSE;
-        }
-        else
-        {
-            return TRUE;
-        }
-        
-
-        // if ($fechacita == $data) {
-		// 	$this->form_validation->set_message('acceso','No se puede asignar');
-		// 	return false;
-        // }
-		// else
-		// {
-		// 	return true;
-		// }
     }
 }
 

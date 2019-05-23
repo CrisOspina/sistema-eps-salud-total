@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2019 a las 01:28:53
+-- Tiempo de generación: 23-05-2019 a las 09:28:24
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -29,11 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `citaspacientes` (
-  `pkid` int(11) NOT NULL,
+  `pkid` int(20) NOT NULL,
   `pacienteid` int(20) NOT NULL,
   `medicoid` int(20) NOT NULL,
-  `fechacita` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `observaciones` varchar(255) NOT NULL,
+  `fechacita` date NOT NULL,
+  `hora` time NOT NULL,
+  `observaciones` mediumtext NOT NULL,
   `fecharegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fechamodificacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,10 +43,9 @@ CREATE TABLE `citaspacientes` (
 -- Volcado de datos para la tabla `citaspacientes`
 --
 
-INSERT INTO `citaspacientes` (`pkid`, `pacienteid`, `medicoid`, `fechacita`, `observaciones`, `fecharegistro`, `fechamodificacion`) VALUES
-(60, 6, 2, '2019-05-01 06:00:00', '', '2019-05-21 17:31:03', '2019-05-21 17:31:03'),
-(73, 6, 2, '2019-05-01 06:00:00', '', '2019-05-21 19:02:24', '2019-05-21 19:02:24'),
-(74, 6, 2, '2019-05-01 06:00:00', '', '2019-05-21 19:08:22', '2019-05-21 19:08:22');
+INSERT INTO `citaspacientes` (`pkid`, `pacienteid`, `medicoid`, `fechacita`, `hora`, `observaciones`, `fecharegistro`, `fechamodificacion`) VALUES
+(153, 6, 2, '2019-05-01', '00:00:01', '', '2019-05-23 07:04:20', '2019-05-23 07:04:20'),
+(157, 14, 2, '2019-05-01', '00:00:02', '', '2019-05-23 07:05:17', '2019-05-23 07:05:17');
 
 -- --------------------------------------------------------
 
@@ -76,6 +76,47 @@ CREATE TABLE `historiapacientes` (
 
 INSERT INTO `historiapacientes` (`pkid`, `pacienteid`, `medicoid`, `ciudad`, `estatura`, `peso`, `profesion`, `motivoconsulta`, `antecedentes`, `diagnostico`, `tratamiento`, `fechaingreso`, `fecharegistro`, `fechamodificacion`) VALUES
 (1, 6, 2, '6', 1.8, 66, 'dev', 'urgencia', 'ninguno', 'crisis', 'citas posteriores', '2019-05-01 06:00:00', '2019-05-21 20:07:17', '2019-05-21 20:07:17');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horascitaspacientes`
+--
+
+CREATE TABLE `horascitaspacientes` (
+  `pkid` int(11) NOT NULL,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `horascitaspacientes`
+--
+
+INSERT INTO `horascitaspacientes` (`pkid`, `hora`) VALUES
+(1, '01:00:00'),
+(2, '01:30:00'),
+(3, '02:00:00'),
+(4, '02:30:00'),
+(5, '03:00:00'),
+(6, '03:30:00'),
+(7, '04:00:00'),
+(8, '04:30:00'),
+(9, '05:00:00'),
+(10, '05:30:00'),
+(11, '06:00:00'),
+(12, '06:30:00'),
+(13, '07:00:00'),
+(14, '07:30:00'),
+(15, '08:00:00'),
+(16, '08:30:00'),
+(17, '09:00:00'),
+(18, '09:30:00'),
+(19, '10:00:00'),
+(20, '10:30:00'),
+(21, '11:00:00'),
+(22, '11:30:00'),
+(23, '12:00:00'),
+(24, '12:30:00');
 
 -- --------------------------------------------------------
 
@@ -171,7 +212,8 @@ INSERT INTO `pacientes` (`pkid`, `pacienteid`, `clave`, `nombre`, `apellido`, `t
 -- Indices de la tabla `citaspacientes`
 --
 ALTER TABLE `citaspacientes`
-  ADD PRIMARY KEY (`pkid`);
+  ADD PRIMARY KEY (`pkid`),
+  ADD UNIQUE KEY `medicoid` (`pacienteid`,`hora`,`fechacita`) USING BTREE;
 
 --
 -- Indices de la tabla `historiapacientes`
@@ -180,6 +222,13 @@ ALTER TABLE `historiapacientes`
   ADD PRIMARY KEY (`pkid`),
   ADD UNIQUE KEY `pacienteid` (`pacienteid`),
   ADD UNIQUE KEY `medicoid` (`medicoid`);
+
+--
+-- Indices de la tabla `horascitaspacientes`
+--
+ALTER TABLE `horascitaspacientes`
+  ADD PRIMARY KEY (`pkid`),
+  ADD UNIQUE KEY `hora` (`hora`);
 
 --
 -- Indices de la tabla `medicamentos`
@@ -211,13 +260,19 @@ ALTER TABLE `pacientes`
 -- AUTO_INCREMENT de la tabla `citaspacientes`
 --
 ALTER TABLE `citaspacientes`
-  MODIFY `pkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `pkid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT de la tabla `historiapacientes`
 --
 ALTER TABLE `historiapacientes`
   MODIFY `pkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `horascitaspacientes`
+--
+ALTER TABLE `horascitaspacientes`
+  MODIFY `pkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `medicamentos`
