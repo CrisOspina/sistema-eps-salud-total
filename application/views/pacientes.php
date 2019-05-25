@@ -30,7 +30,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Id</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
@@ -44,7 +43,7 @@
                             <?php foreach ($listado as $fila) 
                             {?>
                             <tr>
-                                <th scope="row"><?php echo $fila["pkid"];?></th>
+                                <!-- <th scope="row"></th> -->
                                 <td><?php echo $fila["pacienteid"];?></td>
                                 <td><?php echo $fila["nombre"];?></td>
                                 <td><?php echo $fila["apellido"];?></td>

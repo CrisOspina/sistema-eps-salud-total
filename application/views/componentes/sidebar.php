@@ -25,6 +25,24 @@
     Servicios
     </div>
 
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fas fa-book"></i>
+          <span>Informes</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Listado:</h6>
+            <a class="collapse-item" href="utilities-color.html">Citas</a>
+            <a class="collapse-item" href="utilities-border.html">Pacientes</a>
+            <a class="collapse-item" href="utilities-animation.html">Formulas médicas</a>
+            <a class="collapse-item" href="utilities-other.html">Historia clinica</a>
+          </div>
+        </div>
+      </li>
+
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
