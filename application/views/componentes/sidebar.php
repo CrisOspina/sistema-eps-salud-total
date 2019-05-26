@@ -34,10 +34,13 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Listado:</h6>
-            <a class="collapse-item" href="utilities-color.html">Citas</a>
-            <a class="collapse-item" href="utilities-border.html">Pacientes</a>
-            <a class="collapse-item" href="utilities-animation.html">Formulas médicas</a>
-            <a class="collapse-item" href="utilities-other.html">Historia clinica</a>
+                <a class="collapse-item" href="<?php echo base_url();?>./index.php/informes/informeCitas" aria-expanded="true">Citas</a>
+
+                <a class="collapse-item" href="<?php echo base_url();?>./index.php/informes/informePacientes">Pacientes</a>
+
+                <a class="collapse-item" href="<?php echo base_url();?>./index.php/informes/informeFormulas">Formulas médicas</a>
+
+                <a class="collapse-item" href="<?php echo base_url();?>./index.php/informes/InformeHistoria">Historia clinica</a>
           </div>
         </div>
       </li>
