@@ -10,6 +10,8 @@ class Medicamentos extends CI_Controller
         //Cargar libreria de grocery_crud
         $this->load->library('grocery_CRUD');
 
+        $this->load->model("usuarios_model");
+
         //instanciar la libreria
         $this->crud = new grocery_CRUD();
 
@@ -69,6 +71,12 @@ class Medicamentos extends CI_Controller
         $data["contenido"] = $tabla->output;
         $data["js_files"]  = $tabla->js_files;
         $data["css_files"] = $tabla->css_files;
+
+        $respPacientes = $this->usuarios_model->totalPacientes();
+        $data["total_pacientes"] = $respPacientes;
+
+        $respMedicos = $this->usuarios_model->totalMedicos();
+        $data["total_medicos"] = $respMedicos;
 
         $this->load->view('crud', $data);
     }

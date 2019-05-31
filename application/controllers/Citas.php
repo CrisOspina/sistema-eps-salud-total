@@ -67,6 +67,12 @@ class Citas extends CI_Controller
         $data["js_files"]  = $tabla->js_files;
         $data["css_files"] = $tabla->css_files;
 
+        $respPacientes = $this->usuarios_model->totalPacientes();
+        $data["total_pacientes"] = $respPacientes;
+
+        $respMedicos = $this->usuarios_model->totalMedicos();
+        $data["total_medicos"] = $respMedicos;
+
         $this->load->view('crud', $data);
     }
 }

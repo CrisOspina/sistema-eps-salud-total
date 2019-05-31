@@ -51,7 +51,8 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url();?>./index.php/pacientes" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-wheelchair"></i>
-                <span>Pacientes</span>
+                <span>Pacientes</span> - 
+                <span>( <?php echo $total_pacientes?> )</span>
         </a>
     </li>
 
@@ -60,7 +61,8 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url();?>./index.php/medicos" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-user-md "></i>
-            <span>Médicos</span>
+            <span>Médicos</span> -
+            <span>( <?php echo $total_medicos?> )</span>
         </a>
     </li>
 

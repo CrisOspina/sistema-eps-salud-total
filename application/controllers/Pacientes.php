@@ -22,6 +22,12 @@ class Pacientes extends CI_Controller {
         $data['listado']  = $listar;
         $data['titulo']   = "Listado de pacientes";
 
+        $resp = $this->usuarios_model->totalPacientes();
+        $data["total_pacientes"] = $resp;
+
+        $respMedicos = $this->usuarios_model->totalMedicos();
+        $data["total_medicos"] = $respMedicos;
+
         $this->load->view('pacientes', $data);
     }
 

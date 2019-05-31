@@ -47,7 +47,7 @@
 											<input type="text" class="form-control form-control-user" name="pacienteid" id="pacienteid" placeholder="Identificación" required>
 										</div>
 										<div class="form-group">
-											<input type="password" class="form-control form-control-user" name="clave" id="clave" placeholder="Clave" required>
+											<input type="password" class="form-control form-control-user" name="clave" id="clave" placeholder="Contraseña" required>
 										</div>
 										<button class="btn btn-primary btn-user btn-block">Ingresar</button>
 								  </form>

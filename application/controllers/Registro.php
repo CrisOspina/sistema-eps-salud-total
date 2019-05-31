@@ -19,8 +19,6 @@ class Registro extends CI_Controller {
            
             $data["mensaje"] = $resp;
 
-          
-
         }
 
         $this->load->view('login', $data);

@@ -79,5 +79,19 @@
             }
             return $resp;
         }
+
+        //Función que cuenta el total de pacientes
+        function totalPacientes(){
+            $res = $this->db->count_all_results('pacientes');
+            return $res;
+            // print_r($res);
+            // exit();
+        }
+
+        //Función que cuenta el total de medicos
+        function totalMedicos(){
+            $res = $this->db->count_all_results('medicos');
+            return $res;
+        }
     }
 ?>
