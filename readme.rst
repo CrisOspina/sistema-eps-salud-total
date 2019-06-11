@@ -1,7 +1,7 @@
 sistema-eps-salud-total
 Sistema de salud que administrará la programación de citas médicas. PHP - Bootstrap - CodeIgniter - GroceryCrud - mySQL - xampp
 
-![p-eps](https://user-images.githubusercontent.com/38017835/59244006-53678200-8bd8-11e9-82da-63c51cf06a19.PNG)
+![eps](https://user-images.githubusercontent.com/38017835/59244185-0c2dc100-8bd9-11e9-9039-03e8c1c8c6f5.PNG)
 
 
 ###################
